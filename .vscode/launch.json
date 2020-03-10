@@ -6,22 +6,24 @@
       "name": "(gdb) Launch",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/${fileBasenameNoExtension}.exe",
+      "program": "${fileDirname}/${fileBasenameNoExtension}.exe",// 将要进行调试的程序的路径
       "args": [],
       "stopAtEntry": false,
-      "cwd": "${workspaceFolder}",
+      "cwd": "${workspaceFolder}",// 调试程序时的工作目录，此为工作区文件夹；改成${fileDirname}可变为文件所在目录
       "environment": [],
       "externalConsole": true,
+      "internalConsoleOptions": "neverOpen", // 如果不设为neverOpen，调试时会跳到“调试控制台”选项卡，你应该不需要对gdb手动输命令吧？
       "MIMode": "gdb",
       "miDebuggerPath": "E:\\Qt\\Qt5.14.1\\Tools\\mingw730_64\\bin\\gdb.exe",
-      "preLaunchTask": "g++",
+      //"preLaunchTask": "g++",
       "setupCommands": [
          {
             "description": "Enable pretty-printing for gdb",
             "text": "-enable-pretty-printing",
             "ignoreFailures": true
          }
-      ]
+      ],
+      "preLaunchTask": "Compile" // 调试会话开始前执行的任务，一般为编译程序。与tasks.json的label相对应
    }
 ]  
 }

@@ -4,9 +4,9 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "type": "shell",
-            "label": "g++", //这里注意一下，见下文
-            "command": "E:\\Qt\\Qt5.14.1\\Tools\\mingw730_64\\bin\\g++.exe",
+            "type": "process", // process是vsc把预定义变量和转义解析后直接全部传给command；shell相当于先打开shell再输入命令，所以args还会经过shell再解析一遍
+            "label": "Compile", // 任务名称，与launch.json的preLaunchTask相对应
+            "command": "E:\\Qt\\Qt5.14.1\\Tools\\mingw730_64\\bin\\gcc.exe",// 要使用的编译器，C++用g++
             "args": [
                 "-g",
                 "${file}",
@@ -15,16 +15,20 @@
                 "-ggdb3",   // 生成和调试有关的信息
                 "-Wall",    // 开启额外警告
                 "-static-libgcc",   // 静态链接
-                "-std=c++17",       // 使用c++17标准
+                //"-std=c++17",       // 使用c++17标准,c不需要
                 "-finput-charset=UTF-8",    //输入编译器文本编码 默认为UTF-8
-                "-fexec-charset=GB18030",   //输出exe文件的编码
+                "-fexec-charset=GBk",   //输出exe文件的编码
                 "-D _USE_MATH_DEFINES"
             ],
+            "group": {
+                "kind": "build",
+                "isDefault": true // 不为true时ctrl shift B就要手动选择了
+            },
             "options": {
                 "cwd": "E:\\Qt\\Qt5.14.1\\Tools\\mingw730_64\\bin"
             },
             "problemMatcher": [
-                "$gcc"
+                "$gcc"// 此选项可以捕捉编译时终端里的报错信息；但因为有Lint，再开这个可能有双重报错
             ],
             "presentation": {
                 "echo": true,

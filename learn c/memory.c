@@ -13,6 +13,11 @@ int main()
     char c =97;
     printf("%c\n",c);
     
-
-        return 0;
+    //有符号的数的溢出是也是一样的
+    char d =255;
+    d=d+3;
+    printf("%d\n",d);
+    system("pause");
+    
+    return 0;
 }
