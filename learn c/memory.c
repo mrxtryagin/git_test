@@ -14,7 +14,7 @@ int main()
     printf("%c\n",c);
     
     //有符号的数的溢出是也是一样的
-    char d =255;
+   signed char d =255;
     d=d+3;
     printf("%d\n",d);
     system("pause");

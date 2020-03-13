@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include<stdlib.h>
+#include <stdlib.h>
 /*
 scanf和getchar的区别：
 
@@ -35,24 +35,24 @@ int main()
 	char ch1;
 	char ch2;
 	char ch3;
-	int  a;
-	int  b;
+	int a;
+	int b;
 
 	printf("请输入ch1的字符：");
 	ch1 = getchar();
 	printf("ch1 = %c\n", ch1);
-    
-    //getchar（）是让你是输入一个字符，而我们程序中时常回使用scanf（）函数，在输入结束时我们回按回车键（\n）,而此时getchar（）就恰好录入了这个字符，导致程序没有停下来
-    //而这里的话如果不加一个getchar()那么缓冲池里面就有一个\n没有被处理,就会被下面的getchar()接受,程序就出问题了
+
+	//getchar（）是让你是输入一个字符，而我们程序中时常回使用scanf（）函数，在输入结束时我们回按回车键（\n）,而此时getchar（）就恰好录入了这个字符，导致程序没有停下来
+	//而这里的话如果不加一个getchar()那么缓冲池里面就有一个\n没有被处理,就会被下面的getchar()接受,程序就出问题了
 	getchar(); //等待你输入一个字符
-   
-    printf("请输入ch2的字符：");
+
+	printf("请输入ch2的字符：");
 	ch2 = getchar();
 	printf("\'ch2 = %ctest\'\n", ch2);
 
 	getchar(); //测试此处getchar()的作用
 	printf("请输入ch3的字符：");
-	scanf("%c", &ch3);//这里第二个参数一定是变量的地址，而不是变量名
+	scanf("%c", &ch3); //这里第二个参数一定是变量的地址，而不是变量名
 	printf("ch3 = %c\n", ch3);
 
 	printf("请输入a的值：");
